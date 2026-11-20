@@ -29,14 +29,14 @@
 <div class="modal-back" id="modalBack"><div class="modal"><h3 id="modalTitle">Registra movimento</h3><div id="modalBody"></div><div class="modal-actions"><button class="btn secondary" id="cancelModal">Annulla</button><button class="btn" id="saveModal">Conferma</button></div></div></div>
 <script>
 const defaultProducts=[
-{id:1,name:"Acqua naturale 1,5 L",code:"BEV-001",price:0.55,stock:42,min:20,sold:36},
-{id:2,name:"Caffè macinato 250 g",code:"ALM-014",price:3.90,stock:8,min:12,sold:28},
-{id:3,name:"Pasta 500 g",code:"ALM-022",price:1.20,stock:64,min:18,sold:24},
-{id:4,name:"Detersivo piatti 1 L",code:"CAS-008",price:2.45,stock:5,min:10,sold:19},
-{id:5,name:"Biscotti 700 g",code:"ALM-031",price:2.80,stock:27,min:10,sold:17},
-{id:6,name:"Carta casa 2 rotoli",code:"CAS-017",price:1.75,stock:0,min:8,sold:15},
-{id:7,name:"Latte UHT 1 L",code:"LAT-003",price:1.35,stock:31,min:15,sold:13},
-{id:8,name:"Sapone mani 300 ml",code:"IGI-012",price:1.95,stock:14,min:8,sold:9}
+{id:1,name:"Aroma concentrato agrumi",code:"ARO-001",category:"Nicotine",subcategory:"Aromi",price:5.90,stock:18,min:6,sold:36},
+{id:2,name:"Base neutra 50/50",code:"BAS-014",category:"Nicotine",subcategory:"Basi neutre",price:6.50,stock:8,min:12,sold:28},
+{id:3,name:"Liquido pronto 10 ml",code:"LIQ-022",category:"Nicotine",subcategory:"Liquidi",price:5.50,stock:24,min:10,sold:24},
+{id:4,name:"Resistenza mesh 0.8 ohm",code:"RES-008",category:"Hardware",subcategory:"Resistenze",price:3.50,stock:5,min:10,sold:19},
+{id:5,name:"Kit pod ricaricabile",code:"DIS-031",category:"Hardware",subcategory:"Dispositivi",price:19.90,stock:27,min:10,sold:17},
+{id:6,name:"Drip tip 510",code:"ACC-017",category:"Hardware",subcategory:"Accessori",price:2.50,stock:0,min:8,sold:15},
+{id:7,name:"Base neutra 70/30",code:"BAS-003",category:"Nicotine",subcategory:"Basi neutre",price:6.50,stock:31,min:15,sold:13},
+{id:8,name:"Confezione resistenze",code:"RES-012",category:"Hardware",subcategory:"Resistenze",price:8.90,stock:14,min:8,sold:9}
 ];
 const defaultMoves=[
 {date:"16/11/2026",type:"Vendita",id:2,qty:3},{date:"16/11/2026",type:"Carico",id:1,qty:20},{date:"15/11/2026",type:"Vendita",id:4,qty:2},{date:"14/11/2026",type:"Vendita",id:3,qty:5},{date:"13/11/2026",type:"Carico",id:5,qty:12},{date:"12/11/2026",type:"Vendita",id:6,qty:4}
@@ -47,7 +47,7 @@ let categories=[{id:1,name:"Nicotine",subcategories:["Aromi","Basi neutre","Liqu
 function validData(d){return d&&(d.version===1||d.version===2)&&Array.isArray(d.products)&&Array.isArray(d.moves)&&d.products.every(p=>Number.isInteger(p.id)&&typeof p.name==="string"&&typeof p.code==="string"&&Number.isFinite(Number(p.price))&&Number.isFinite(Number(p.stock))&&Number.isFinite(Number(p.min))&&Number.isFinite(Number(p.sold)))&&d.moves.every(m=>typeof m.date==="string"&&(m.type==="Vendita"||m.type==="Carico")&&Number.isInteger(Number(m.id))&&Number.isInteger(Number(m.qty))&&Number(m.qty)>0&&d.products.some(p=>p.id===Number(m.id)))&&(d.categories===undefined||(Array.isArray(d.categories)&&d.categories.every(c=>Number.isInteger(c.id)&&typeof c.name==="string"&&c.name.trim()&&Array.isArray(c.subcategories)&&c.subcategories.every(s=>typeof s==="string"))));}
 function loadSaved(){try{let raw=localStorage.getItem(DATA_KEY);if(!raw)raw=localStorage.getItem(LEGACY_DATA_KEY);if(!raw)return null;const d=JSON.parse(raw);return validData(d)?d:null}catch(e){return null}}
 const savedData=loadSaved();
-let products=savedData?savedData.products.map(p=>({...p,category:p.category||"Senza categoria",subcategory:p.subcategory||""})):defaultProducts.map(p=>({...p,category:"Senza categoria",subcategory:""}));
+let products=savedData?savedData.products.map(p=>({...p,category:p.category||"Senza categoria",subcategory:p.subcategory||""})):defaultProducts.map(p=>({...p,category:p.category||"Senza categoria",subcategory:p.subcategory||""}));
 let moves=savedData?savedData.moves.map(m=>({...m})):defaultMoves.map(m=>({...m}));
 if(savedData&&Array.isArray(savedData.categories))categories=savedData.categories;
 function saveLocal(){try{localStorage.setItem(DATA_KEY,JSON.stringify({version:2,products,moves,categories}));}catch(e){console.warn("Salvataggio locale non riuscito",e)}}
