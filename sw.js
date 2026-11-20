@@ -1,4 +1,4 @@
-const CACHE_NAME = "nexa-stock-control-v3";
+const CACHE_NAME = "nexa-stock-control-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
