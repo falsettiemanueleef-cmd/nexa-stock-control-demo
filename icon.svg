@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="112" fill="#123d16"/>
+<circle cx="256" cy="238" r="190" fill="#f1d0a0"/>
+<path d="M159 365c9-40 24-69 53-92-20-16-31-42-29-70 3-51 42-90 91-90 48 0 86 36 91 82 5 41-13 73-45 91-9 5-14 16-12 27l9 52H159z" fill="#146016"/>
+<path d="M301 111c61-30 113 1 124 50 9 39-7 69-42 85 28-28 25-55 8-74-21-24-54-27-90-15z" fill="#146016"/>
+<path d="M193 191c-30-18-37-42-25-65 12-21 37-25 53-11-26-2-34 13-29 27 5 15 20 21 39 25" fill="none" stroke="#146016" stroke-width="15" stroke-linecap="round"/>
+<path d="M217 225l-27 77" stroke="#146016" stroke-width="16" stroke-linecap="round"/>
+<rect x="70" y="382" width="372" height="75" rx="12" fill="#0b260d"/>
+<text x="256" y="431" text-anchor="middle" font-family="Arial,sans-serif" font-size="48" font-weight="800" fill="#f1d0a0">NEXA</text>
+</svg>
