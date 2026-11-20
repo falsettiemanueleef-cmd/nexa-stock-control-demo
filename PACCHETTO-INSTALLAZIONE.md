@@ -1,30 +1,69 @@
-# NEXA STOCK CONTROL — pacchetto installabile
+# NEXA STOCK CONTROL
+## Guida all'installazione e all'utilizzo
+**La Bottega dello Svapo — Versione 11**
 
-App gestionale per La Bottega dello Svapo. È una **Progressive Web App (PWA)**: si installa da Chrome su Android o da Edge/Chrome su Windows e si apre in una finestra dedicata, senza barra del browser.
+### Collegamenti
+- **Apri il gestionale:** https://falsettiemanueleef-cmd.github.io/nexa-stock-control-demo/
+- **Questa guida online:** https://falsettiemanueleef-cmd.github.io/nexa-stock-control-demo/guida-trasferimento.html
+- **Repository del progetto:** https://github.com/falsettiemanueleef-cmd/nexa-stock-control-demo
+- **Archivio ZIP dei file del progetto:** https://github.com/falsettiemanueleef-cmd/nexa-stock-control-demo/archive/refs/heads/main.zip
 
-## Installazione
-1. Aprire https://falsettiemanueleef-cmd.github.io/nexa-stock-control-demo/ con connessione Internet.
-2. Attendere il caricamento completo e aprire il menu del browser.
-3. Su Android Chrome: scegliere **Installa app** (oppure **Aggiungi a schermata Home**, se il browser mostra questa voce).
-4. Su Windows Edge/Chrome: usare **Installa app** dal menu o dall'icona di installazione nella barra degli indirizzi.
-5. Avviare l'app installata una volta mentre si è online. Il service worker scarica e conserva i file necessari.
-6. Chiudere l'app, disattivare Internet e riaprirla per la prima prova offline.
+> Il collegamento ZIP contiene i file sorgente del progetto: non è un APK Android né un programma EXE Windows. Per installare il gestionale, usa il collegamento web qui sopra e segui le istruzioni.
 
-## Uso offline
-Dopo la prima installazione e il primo avvio online, le schermate e le funzioni locali sono disponibili senza rete. I dati vengono salvati nel browser/dispositivo. Ogni dispositivo mantiene il proprio archivio: non esiste sincronizzazione automatica.
+## Novità e modifiche apportate
+- **Icona personalizzata:** utilizza il logo originale de La Bottega dello Svapo fornito per il progetto.
+- **Installazione come app:** il gestionale può essere aggiunto alla schermata Home Android o installato su Windows da Chrome/Edge.
+- **Modalità offline:** dopo la prima installazione e il primo caricamento completo online, l'app conserva i file necessari per riaprire il gestionale senza rete.
+- **Categorie e sottocategorie:** organizzazione dei prodotti per gruppi, ad esempio Nicotine, Hardware, Aromi, Basi neutre, Resistenze, Liquidi e Accessori. Le voci sono gestibili dalla sezione **Categorie prodotti**.
+- **Archivio locale:** i dati vengono salvati sul dispositivo utilizzato.
+- **Backup manuale:** funzioni Esporta dati e Importa dati per trasferire l'archivio tra PC e telefono.
+- **Nessuna sincronizzazione automatica:** telefono e computer mantengono archivi separati.
 
-## Trasferimento PC ↔ telefono
-Sul dispositivo che contiene i dati aggiornati, premere **Esporta dati**. Trasferire il file JSON all'altro dispositivo. Nell'app di destinazione premere **Importa dati** e selezionare il backup. L'importazione sostituisce i dati presenti sul dispositivo di destinazione: esportare prima una copia di sicurezza.
+## 1. Installazione su Android
+1. Connettersi a Internet.
+2. Aprire **Google Chrome** e visitare il link del gestionale.
+3. Attendere il caricamento completo.
+4. Aprire il menu ⋮ in alto a destra.
+5. Selezionare **Installa app** oppure **Aggiungi a schermata Home**, in base alla voce disponibile.
+6. Confermare e attendere.
+7. Aprire l'app dalla nuova icona almeno una volta mentre si è online.
 
-## Categorie
-Le categorie e sottocategorie iniziali (Nicotine, Hardware, Aromi, Basi neutre, Liquidi, Resistenze, Dispositivi, Accessori) sono modificabili e se ne possono aggiungere altre dalla sezione **Categorie prodotti**.
+## 2. Installazione su Windows
+1. Connettersi a Internet.
+2. Aprire **Microsoft Edge** o **Google Chrome**.
+3. Visitare il link del gestionale e attendere il caricamento.
+4. Dal menu del browser scegliere **Installa app**; in alternativa usare l'icona di installazione nella barra degli indirizzi, se presente.
+5. Confermare e avviare l'app una prima volta online.
 
-## Icona
-L'icona usa il logo originale fornito per La Bottega dello Svapo, incorporato nel file `icon.svg`.
+## 3. Prima prova offline
+1. Dopo l'installazione, aprire il gestionale mentre Internet è attivo e attendere il caricamento completo.
+2. Chiudere l'app.
+3. Disattivare Wi-Fi e rete mobile (oppure attivare la modalità aereo).
+4. Riaprire l'app dalla sua icona.
+5. Verificare che si apra e che siano disponibili i dati salvati su quel dispositivo.
 
-## Importante
-- Questo pacchetto è una PWA installabile, **non** un file APK Android né un installer EXE Windows.
-- La prima installazione e il primo caricamento richiedono Internet e un browser compatibile.
-- Per ricevere gli aggiornamenti, aprire l'app online una volta.
-- Non cancellare i dati del browser: si rischia di cancellare l'archivio locale.
-- Fare backup periodici. La sincronizzazione tra PC e telefono resta manuale.
+La prima installazione e il primo caricamento richiedono Internet. Per ricevere un aggiornamento futuro, aprire l'app online e attendere che la nuova versione venga caricata.
+
+## 4. Categorie e sottocategorie
+Aprire **Categorie prodotti** per organizzare il catalogo. Le categorie e sottocategorie possono essere adattate al negozio e ampliate secondo le varietà di prodotti. Dopo aver modificato l'organizzazione, verificare le voci nel catalogo.
+
+## 5. Trasferire i dati tra telefono e PC
+Ogni dispositivo conserva il proprio archivio. Per trasferire le modifiche:
+1. Sul dispositivo con i dati più recenti, premere **Esporta dati**.
+2. Salvare il file di backup JSON.
+3. Inviare il file all'altro dispositivo (ad esempio tramite WhatsApp, email o cavo USB).
+4. Sul dispositivo di destinazione, aprire il gestionale e premere **Importa dati**.
+5. Selezionare il file e confermare solo dopo aver verificato che sia quello corretto.
+
+**Attenzione:** l'importazione sostituisce i dati presenti sul dispositivo di destinazione. Se quei dati servono, esportare prima un backup anche da quel dispositivo. Il sistema non unisce automaticamente due archivi.
+
+## 6. Conservazione dei dati
+- Non cancellare i dati del browser o dell'app: potresti eliminare l'archivio locale.
+- Eseguire backup regolari e conservarne una copia fuori dal dispositivo.
+- Non modificare contemporaneamente il magazzino su PC e telefono aspettandosi che le modifiche si uniscano.
+- Prima di importare un backup, fare una copia dei dati già presenti sul dispositivo di destinazione.
+
+## 7. Natura dell'applicazione
+NEXA STOCK CONTROL è una **Progressive Web App (PWA)** installabile tramite browser compatibile. Non è distribuita come APK Android o installer EXE Windows. La prima installazione richiede connessione Internet; dopo il primo caricamento completo, è progettata per l'uso offline. La sincronizzazione tra dispositivi rimane manuale tramite backup JSON.
+
+**NEXA STOCK CONTROL — La Bottega dello Svapo**
