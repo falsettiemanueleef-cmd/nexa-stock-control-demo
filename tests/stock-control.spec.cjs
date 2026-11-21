@@ -104,3 +104,34 @@ test('blocks sales above available stock and keeps app shell cacheable', async (
   await expect(page.locator('h1')).toContainText('NEXA STOCK CONTROL');
   await context.setOffline(false);
 });
+
+
+test('delete movement reduces stock and optional sales cleanup removes demo revenue', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Registra movimento' }).first().click();
+  await page.locator('#msearch').fill('ACC-017');
+  await page.locator('#mtype').selectOption('Elimina');
+  await expect(page.locator('#eraseSalesWrap')).not.toHaveClass(/hidden/);
+  await page.locator('#mqty').fill('2');
+  await page.getByRole('button', { name: 'Conferma' }).click();
+  await expect(page.locator('#modalBack')).not.toHaveClass(/open/);
+  await page.getByRole('button', { name: 'Inventario' }).click();
+  let row = page.locator('#inventoryRows tr').filter({ hasText: 'ACC-017' });
+  await expect(row).toContainText('6');
+  await page.getByRole('button', { name: 'Movimenti' }).click();
+  await expect(page.locator('#moveRows')).toContainText('Elimina');
+
+  await page.getByRole('button', { name: 'Registra movimento' }).first().click();
+  await page.locator('#msearch').fill('ACC-017');
+  await page.locator('#mtype').selectOption('Elimina');
+  await page.locator('#eraseSales').check();
+  await page.locator('#mqty').fill('1');
+  page.once('dialog', dialog => dialog.accept());
+  await page.getByRole('button', { name: 'Conferma' }).click();
+  await expect(page.locator('#modalBack')).not.toHaveClass(/open/);
+  await page.getByRole('button', { name: 'Movimenti' }).click();
+  await expect(page.locator('#moveRows')).not.toContainText('Vendita');
+  await expect(page.locator('#moveRows')).toContainText('Elimina');
+  await page.getByRole('button', { name: 'Report vendite' }).click();
+  await expect(page.locator('#reportMetrics')).toContainText('0');
+});
