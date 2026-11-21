@@ -1,6 +1,6 @@
 # NEXA STOCK CONTROL
 ## Guida all'installazione e all'utilizzo
-**La Bottega dello Svapo — Versione 11**
+**La Bottega dello Svapo — Versione 12**
 
 ### Collegamenti
 - **Apri il gestionale:** https://falsettiemanueleef-cmd.github.io/nexa-stock-control-demo/
@@ -15,6 +15,8 @@
 - **Installazione come app:** il gestionale può essere aggiunto alla schermata Home Android o installato su Windows da Chrome/Edge.
 - **Modalità offline:** dopo la prima installazione e il primo caricamento completo online, l'app conserva i file necessari per riaprire il gestionale senza rete.
 - **Categorie e sottocategorie:** organizzazione dei prodotti per gruppi, ad esempio Nicotine, Hardware, Aromi, Basi neutre, Resistenze, Liquidi e Accessori. Le voci sono gestibili dalla sezione **Categorie prodotti**.
+- **Gestione prodotti:** modifica, archiviazione con storico conservato e cancellazione definitiva con movimenti collegati.
+- **Ricerca movimenti:** selezione per categoria e sottocategoria, più ricerca per nome o codice.
 - **Archivio locale:** i dati vengono salvati sul dispositivo utilizzato.
 - **Backup manuale:** funzioni Esporta dati e Importa dati per trasferire l'archivio tra PC e telefono.
 - **Nessuna sincronizzazione automatica:** telefono e computer mantengono archivi separati.
@@ -28,14 +30,23 @@
 6. Confermare e attendere.
 7. Aprire l'app dalla nuova icona almeno una volta mentre si è online.
 
-## 2. Installazione su Windows
+## 2. Installazione su iPhone / iPad
+1. Connettersi a Internet e aprire **Safari** (non il browser incorporato in un'altra app).
+2. Visitare il link del gestionale e attendere il caricamento completo.
+3. Toccare il pulsante **Condividi** di Safari.
+4. Scorrere le azioni e scegliere **Aggiungi alla schermata Home**. Se disponibile, attivare **Apri come app web**.
+5. Toccare **Aggiungi** e avviare la nuova icona almeno una volta mentre Internet è attivo.
+
+Su iPhone i dati restano locali al browser/app installata e non si sincronizzano automaticamente con altri dispositivi. La procedura e il funzionamento offline devono essere verificati sul dispositivo Apple effettivo.
+
+## 3. Installazione su Windows
 1. Connettersi a Internet.
 2. Aprire **Microsoft Edge** o **Google Chrome**.
 3. Visitare il link del gestionale e attendere il caricamento.
 4. Dal menu del browser scegliere **Installa app**; in alternativa usare l'icona di installazione nella barra degli indirizzi, se presente.
 5. Confermare e avviare l'app una prima volta online.
 
-## 3. Prima prova offline
+## 4. Prima prova offline
 1. Dopo l'installazione, aprire il gestionale mentre Internet è attivo e attendere il caricamento completo.
 2. Chiudere l'app.
 3. Disattivare Wi-Fi e rete mobile (oppure attivare la modalità aereo).
@@ -44,10 +55,10 @@
 
 La prima installazione e il primo caricamento richiedono Internet. Per ricevere un aggiornamento futuro, aprire l'app online e attendere che la nuova versione venga caricata.
 
-## 4. Categorie e sottocategorie
+## 5. Categorie e sottocategorie
 Aprire **Categorie prodotti** per organizzare il catalogo. Le categorie e sottocategorie possono essere adattate al negozio e ampliate secondo le varietà di prodotti. Dopo aver modificato l'organizzazione, verificare le voci nel catalogo.
 
-## 5. Trasferire i dati tra telefono e PC
+## 6. Trasferire i dati tra dispositivi
 Ogni dispositivo conserva il proprio archivio. Per trasferire le modifiche:
 1. Sul dispositivo con i dati più recenti, premere **Esporta dati**.
 2. Salvare il file di backup JSON.
@@ -57,13 +68,13 @@ Ogni dispositivo conserva il proprio archivio. Per trasferire le modifiche:
 
 **Attenzione:** l'importazione sostituisce i dati presenti sul dispositivo di destinazione. Se quei dati servono, esportare prima un backup anche da quel dispositivo. Il sistema non unisce automaticamente due archivi.
 
-## 6. Conservazione dei dati
+## 7. Conservazione dei dati
 - Non cancellare i dati del browser o dell'app: potresti eliminare l'archivio locale.
 - Eseguire backup regolari e conservarne una copia fuori dal dispositivo.
 - Non modificare contemporaneamente il magazzino su PC e telefono aspettandosi che le modifiche si uniscano.
 - Prima di importare un backup, fare una copia dei dati già presenti sul dispositivo di destinazione.
 
-## 7. Natura dell'applicazione
+## 8. Natura dell'applicazione
 NEXA STOCK CONTROL è una **Progressive Web App (PWA)** installabile tramite browser compatibile. Non è distribuita come APK Android o installer EXE Windows. La prima installazione richiede connessione Internet; dopo il primo caricamento completo, è progettata per l'uso offline. La sincronizzazione tra dispositivi rimane manuale tramite backup JSON.
 
 **NEXA STOCK CONTROL — La Bottega dello Svapo**
