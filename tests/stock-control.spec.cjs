@@ -73,8 +73,7 @@ test('product lifecycle, movement search, stock and reports', async ({ page }) =
   await page.getByRole('button', { name: 'Inventario' }).click();
   await page.locator('#search').fill('QA-001');
   row = page.locator('#inventoryRows tr').filter({ hasText: 'QA-001' });
-  page.once('dialog', dialog => dialog.accept());
-  page.once('dialog', dialog => dialog.accept());
+  page.on('dialog', dialog => dialog.accept());
   await row.locator('[data-hard-delete-product]').click();
   await expect(page.locator('#inventoryRows')).not.toContainText('QA-001');
   checkpoint('12 hard delete completed');
