@@ -27,6 +27,7 @@ test('product lifecycle, movement search, stock and reports', async ({ page }) =
   await page.getByRole('button', { name: 'Conferma' }).click();
   row = page.locator('#inventoryRows tr').filter({ hasText: 'QA-001' });
   await expect(row).toContainText('8');
+  await page.getByRole('button', { name: 'Inventario' }).click();
 
   await row.getByRole('button', { name: 'Modifica' }).click();
   await page.locator('#pname').fill('Prodotto QA aggiornato');
