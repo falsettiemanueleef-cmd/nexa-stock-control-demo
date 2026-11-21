@@ -70,6 +70,7 @@ test('product lifecycle, movement search, stock and reports', async ({ page }) =
   const backupPath = await download.path();
   expect(backupPath).toBeTruthy();
   checkpoint('11 backup exported');
+  await page.getByRole('button', { name: 'Inventario' }).click();
   await page.locator('#search').fill('QA-001');
   row = page.locator('#inventoryRows tr').filter({ hasText: 'QA-001' });
   page.once('dialog', dialog => dialog.accept());
