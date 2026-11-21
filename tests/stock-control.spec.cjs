@@ -92,7 +92,7 @@ test('blocks sales above available stock and keeps app shell cacheable', async (
   await page.evaluate(() => navigator.serviceWorker.ready);
   await expect.poll(() => page.evaluate(() => !!navigator.serviceWorker.controller)).toBeTruthy();
   await page.getByRole('button', { name: 'Registra movimento' }).first().click();
-  await page.locator('#msearch').fill('ACC-017');
+  await page.locator('#msearch').fill('BAS-014');
   await page.locator('#mtype').selectOption('Vendita');
   await page.locator('#mqty').fill('999');
   page.once('dialog', dialog => dialog.accept());
@@ -109,20 +109,20 @@ test('blocks sales above available stock and keeps app shell cacheable', async (
 test('delete movement reduces stock and optional sales cleanup removes demo revenue', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Registra movimento' }).first().click();
-  await page.locator('#msearch').fill('ACC-017');
+  await page.locator('#msearch').fill('BAS-014');
   await page.locator('#mtype').selectOption('Elimina');
   await expect(page.locator('#eraseSalesWrap')).not.toHaveClass(/hidden/);
   await page.locator('#mqty').fill('2');
   await page.getByRole('button', { name: 'Conferma' }).click();
   await expect(page.locator('#modalBack')).not.toHaveClass(/open/);
   await page.getByRole('button', { name: 'Inventario' }).click();
-  let row = page.locator('#inventoryRows tr').filter({ hasText: 'ACC-017' });
+  let row = page.locator('#inventoryRows tr').filter({ hasText: 'BAS-014' });
   await expect(row).toContainText('6');
   await page.getByRole('button', { name: 'Movimenti' }).click();
   await expect(page.locator('#moveRows')).toContainText('Elimina');
 
   await page.getByRole('button', { name: 'Registra movimento' }).first().click();
-  await page.locator('#msearch').fill('ACC-017');
+  await page.locator('#msearch').fill('BAS-014');
   await page.locator('#mtype').selectOption('Elimina');
   await page.locator('#eraseSales').check();
   await page.locator('#mqty').fill('1');
@@ -130,8 +130,9 @@ test('delete movement reduces stock and optional sales cleanup removes demo reve
   await page.getByRole('button', { name: 'Conferma' }).click();
   await expect(page.locator('#modalBack')).not.toHaveClass(/open/);
   await page.getByRole('button', { name: 'Movimenti' }).click();
-  await expect(page.locator('#moveRows')).not.toContainText('Vendita');
-  await expect(page.locator('#moveRows')).toContainText('Elimina');
+  const productRows = page.locator('#moveRows tr').filter({ hasText: 'Base neutra 50/50' });
+  await expect(productRows).not.toContainText('Vendita');
+  await expect(productRows).toContainText('Elimina');
   await page.getByRole('button', { name: 'Report vendite' }).click();
-  await expect(page.locator('#reportMetrics')).toContainText('0');
+  await expect(page.locator('#reportRanking')).not.toContainText('Base neutra 50/50');
 });
