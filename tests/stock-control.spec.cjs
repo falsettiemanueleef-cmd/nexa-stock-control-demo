@@ -78,7 +78,6 @@ test('product lifecycle, movement search, stock and reports', async ({ page }) =
   await expect(page.locator('#inventoryRows')).not.toContainText('QA-001');
   checkpoint('12 hard delete completed');
 
-  page.on('dialog', dialog => dialog.accept());
   await page.locator('#importFile').setInputFiles(backupPath);
   await expect(page.locator('#inventoryRows')).toContainText('QA-001');
   checkpoint('13 backup restored');
