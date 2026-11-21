@@ -131,8 +131,8 @@ test('delete movement reduces stock and optional sales cleanup removes demo reve
   await expect(page.locator('#modalBack')).not.toHaveClass(/open/);
   await page.getByRole('button', { name: 'Movimenti' }).click();
   const productRows = page.locator('#moveRows tr').filter({ hasText: 'Base neutra 50/50' });
-  await expect(productRows).not.toContainText('Vendita');
-  await expect(productRows).toContainText('Elimina');
+  await expect(productRows.filter({ hasText: 'Vendita' })).toHaveCount(0);
+  await expect(productRows.filter({ hasText: 'Elimina' })).toHaveCount(2);
   await page.getByRole('button', { name: 'Report vendite' }).click();
   await expect(page.locator('#reportRanking')).not.toContainText('Base neutra 50/50');
 });
