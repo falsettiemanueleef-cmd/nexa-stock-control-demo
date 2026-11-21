@@ -51,7 +51,6 @@ test('product lifecycle, movement search, stock and reports', async ({ page }) =
   await expect(page.locator('#mproduct option')).toHaveCount(1);
   await page.getByRole('button', { name: 'Annulla' }).click();
 
-  await page.getByRole('button', { name: 'Esporta dati' }).click();
   const [download] = await Promise.all([
     page.waitForEvent('download'),
     page.getByRole('button', { name: 'Esporta dati' }).click()
@@ -65,8 +64,8 @@ test('product lifecycle, movement search, stock and reports', async ({ page }) =
   await row.getByRole('button', { name: 'Elimina e cancella dati' }).click();
   await expect(page.locator('#inventoryRows')).not.toContainText('QA-001');
 
+  page.on('dialog', dialog => dialog.accept());
   await page.locator('#importFile').setInputFiles(backupPath);
-  page.once('dialog', dialog => dialog.accept());
   await expect(page.locator('#inventoryRows')).toContainText('QA-001');
   await page.getByRole('button', { name: 'Movimenti' }).click();
   await expect(page.locator('#moveRows')).toContainText('Prodotto QA aggiornato');
