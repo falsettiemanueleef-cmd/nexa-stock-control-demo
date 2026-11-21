@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 test('product lifecycle, movement search, stock and reports', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('button', { name: 'Inventario' }).click();
+  await page.locator('button[data-view="inventory"]').click();
   await page.getByRole('button', { name: 'Nuovo prodotto' }).click();
   await page.locator('#pname').fill('Prodotto QA');
   await page.locator('#pcode').fill('QA-001');
@@ -29,7 +29,7 @@ test('product lifecycle, movement search, stock and reports', async ({ page }) =
   await expect(row).toContainText('8');
   await page.getByRole('button', { name: 'Inventario' }).click();
 
-  await row.getByRole('button', { name: 'Modifica' }).click();
+  await row.locator('[data-edit-product]').click();
   await page.locator('#pname').fill('Prodotto QA aggiornato');
   await page.locator('#pprice').fill('10.50');
   await page.getByRole('button', { name: 'Conferma' }).click();
@@ -38,11 +38,11 @@ test('product lifecycle, movement search, stock and reports', async ({ page }) =
   await expect(row).toContainText('10,50');
 
   page.once('dialog', dialog => dialog.accept());
-  await row.getByRole('button', { name: 'Archivia' }).click();
+  await row.locator('[data-archive-product]').click();
   await page.locator('#archiveFilter').selectOption('archived');
   row = page.locator('#inventoryRows tr').filter({ hasText: 'QA-001' });
   await expect(row).toContainText('Archiviato');
-  await page.getByRole('button', { name: 'Ripristina' }).click();
+  await row.locator('[data-restore-product]').click();
   await page.locator('#archiveFilter').selectOption('active');
   row = page.locator('#inventoryRows tr').filter({ hasText: 'QA-001' });
   await expect(row).not.toContainText('Archiviato');
@@ -62,7 +62,7 @@ test('product lifecycle, movement search, stock and reports', async ({ page }) =
   row = page.locator('#inventoryRows tr').filter({ hasText: 'QA-001' });
   page.once('dialog', dialog => dialog.accept());
   page.once('dialog', dialog => dialog.accept());
-  await row.getByRole('button', { name: 'Elimina e cancella dati' }).click();
+  await row.locator('[data-hard-delete-product]').click();
   await expect(page.locator('#inventoryRows')).not.toContainText('QA-001');
 
   page.on('dialog', dialog => dialog.accept());
